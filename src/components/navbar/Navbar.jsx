@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       {/* Sidebar */}
-      <Sidebar/>
+      <Sidebar />
       <div className="wrapper">
         <motion.span
           initial={{ opacity: 0, scale: 0.5 }}
@@ -16,17 +16,20 @@ const Navbar = () => {
           Kaushik Dev
         </motion.span>
         <div className="social">
-          <a href="#">
-            <img src="/facebook.png" alt="" />
+          <a
+            href="https://mail.google.com/mail/u/0/#all?compose=CllgCJTGmXXDnXVnWwQhCVNjTlTpGBRzDRQbdZhBnCPXHFqGTDpJMkLkjSLPGJShKHhlTLvcNWg"
+            target="_blank"
+          >
+            <img src="/gmail.png" alt="" />
           </a>
-          <a href="#">
-            <img src="/instagram.png" alt="" />
+          <a href="https://leetcode.com/u/kaushikd207/" target="_blank">
+            <img src="/leetcode.png" alt="" />
           </a>
-          <a href="#">
-            <img src="/youtube.png" alt="" />
+          <a href="https://linkedin.com/in/kaushikd207" target="_blank">
+            <img src="/linkedIn.png" alt="" />
           </a>
-          <a href="#">
-            <img src="/dribbble.png" alt="" />
+          <a href="https://github.com/kaushikd207" target="_blank">
+            <img src="/github.png" alt="" />
           </a>
         </div>
       </div>

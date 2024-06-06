@@ -25,14 +25,16 @@ const itemVariants = {
 };
 
 const Links = () => {
-  const items = ["Homepage", "Services", "Portfolio", "Contact", "About"];
-
+  const items = ["Homepage", "Portfolio", "Contact", "Resume"];
+  const resumeLink =
+    "https://drive.google.com/file/d/1LD03DTqDPoenzX9qtr2HtnvV76T7bmUS/view?usp=drive_link";
   return (
     <motion.div className="links" variants={variants}>
       {items.map((item) => (
         <motion.a
-          href={`#${item}`}
+          href={`${item == "Resume" ? resumeLink : `#${item}`}`}
           key={item}
+          target={`${item == "Resume" ? "_blank" : null}`}
           variants={itemVariants}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
