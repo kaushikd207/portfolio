@@ -13,7 +13,7 @@ const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          Kaushik Dev
+          Kaushik
         </motion.span>
         <div className="social">
           <a
