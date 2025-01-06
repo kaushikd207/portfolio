@@ -79,7 +79,12 @@
       object-fit: cover;
     }
   }
-
+.buttons{
+  cursor: pointer;
+}
+a{
+  cursor: pointer;
+}
   .slidingTextContainer {
     position: absolute;
     font-size: 50vh;

@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import "./contact.scss";
 import { motion, useInView } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
 
 const variants = {
   initial: {
@@ -23,25 +24,43 @@ const Contact = () => {
   const formRef = useRef();
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [submitDisabled, setSubmitDisabled] = useState(false);
+  const [lastSubmitTime, setLastSubmitTime] = useState(0); // Track last submission time
 
   const isInView = useInView(ref, { margin: "-100px" });
-
   const sendEmail = (e) => {
     e.preventDefault();
-
+    const currentTime = new Date().getTime();
+    if (currentTime - lastSubmitTime < 30000) {
+      alert("You are submitting too quickly. Please wait a moment.");
+      return;
+    }
+    setLastSubmitTime(currentTime);
+    setSubmitDisabled(true);
+    setTimeout(() => {
+      setSubmitDisabled(false);
+    }, 30000);
     emailjs
       .sendForm(
-        "service_94y20xo",
-        "template_v10u2oh",
+        "service_niislrg",
+        "template_6yv9t23",
         formRef.current,
-        "pX_2hasGmGcuvjXIW"
+        "p8VwUlqbYWU6pHmHf"
       )
       .then(
         (result) => {
-          setSuccess(true)
+          setSuccess(true);
+          toast.success("Message Sent Successfully!", {
+            position: "top-right",
+            autoClose: 5000,
+          });
         },
         (error) => {
           setError(true);
+          toast.error("Error sending message. Please try again.", {
+            position: "top-right",
+            autoClose: 5000,
+          });
         }
       );
   };
@@ -104,16 +123,18 @@ const Contact = () => {
           onSubmit={sendEmail}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 4, duration: 1 }}
+          transition={{ delay: 2, duration: 1 }}
         >
-          <input type="text" required placeholder="Name" name="name"/>
-          <input type="email" required placeholder="Email" name="email"/>
-          <textarea rows={8} placeholder="Message" name="message"/>
-          <button>Submit</button>
+          <input type="text" required placeholder="Name" name="name" />
+          <input type="email" required placeholder="Email" name="email" />
+          <textarea rows={8} placeholder="Message" name="message" />
+          <button type="submit" disabled={submitDisabled}>
+            Submit
+          </button>
           {error && "Error"}
-          {success && "Success"}
         </motion.form>
       </div>
+      <ToastContainer className="toastContainer" />
     </motion.div>
   );
 };

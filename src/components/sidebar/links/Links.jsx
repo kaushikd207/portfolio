@@ -27,7 +27,7 @@ const itemVariants = {
 const Links = () => {
   const items = ["Homepage", "Portfolio", "Contact", "Resume"];
   const resumeLink =
-    "https://drive.google.com/file/d/1LD03DTqDPoenzX9qtr2HtnvV76T7bmUS/view?usp=drive_link";
+    "https://drive.google.com/file/d/1qL6KoxLmp3PLD6Jvl0m6HcyYfSjlLOXG/view?usp=sharing";
   return (
     <motion.div className="links" variants={variants}>
       {items.map((item) => (
